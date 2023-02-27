@@ -43,7 +43,7 @@ class CreateCard extends StatelessWidget {
                       elevation: 0,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10))),
-                  onPressed: () => Navigator.pushNamed(context, '/analizmain'),
+                  onPressed: () => Navigator.pushNamed(context, '/mainpage'),
                   child: Text(
                     "Пропустить",
                     style: TextStyle(

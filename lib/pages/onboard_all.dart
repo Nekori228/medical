@@ -115,7 +115,7 @@ class _CarouselState extends State<Carousel> {
               }),
         ),
         Container(
-          margin: EdgeInsets.fromLTRB(0, 50, 0, 50),
+          margin: EdgeInsets.fromLTRB(0, 40, 0, 40),
           child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: indicators(images.length, activePage)),

@@ -33,3 +33,26 @@ class appBarMedical extends StatelessWidget with PreferredSizeWidget {
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
+
+class appBarMedical2 extends StatelessWidget with PreferredSizeWidget {
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      backgroundColor: Colors.white,
+      elevation: 0,
+      centerTitle: true,
+      title: Text(
+        'Оплата',
+        style: TextStyle(
+            color: Color(0xFF000000),
+            fontWeight: FontWeight.w600,
+            fontFamily: "Caption",
+            fontSize: 20),
+      ),
+      iconTheme: IconThemeData(color: Color(0xFFFFFFFF)),
+    );
+  }
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+}
