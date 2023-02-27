@@ -34,13 +34,20 @@ class _Onboard_allState extends State<Onboard_all> {
                 children: [
                   Container(
                     margin: EdgeInsets.fromLTRB(20, 0, 0, 140),
-                    child: Text(
-                      'Пропустить',
-                      style: TextStyle(
-                          color: Color(0xFF57A9FF),
-                          fontSize: 20,
-                          fontFamily: "",
-                          fontWeight: FontWeight.w600),
+                    child: ElevatedButton(
+                      onPressed: () => Navigator.pushNamed(context, '/signup'),
+                      style: ElevatedButton.styleFrom(
+                        elevation: 0,
+                        backgroundColor: Colors.black.withOpacity(0),
+                      ),
+                      child: Text(
+                        'Пропустить',
+                        style: TextStyle(
+                            color: Color(0xFF57A9FF),
+                            fontSize: 20,
+                            fontFamily: "Lato",
+                            fontWeight: FontWeight.w600),
+                      ),
                     ),
                   ),
                   Container(
@@ -51,8 +58,7 @@ class _Onboard_allState extends State<Onboard_all> {
                 ],
               ),
               Container(
-                margin: EdgeInsets.fromLTRB(0, 30, 0, 30),
-                  child: Carousel())
+                  margin: EdgeInsets.fromLTRB(0, 25, 0, 25), child: Carousel())
             ],
           ),
         ),
@@ -172,13 +178,19 @@ AnimatedContainer slider2(images, pagePosition, active) {
         Text(
           text1[pagePosition],
           style: TextStyle(
-              color: Colors.green, fontSize: 20, fontWeight: FontWeight.w600),
+              color: Color(0xFF00B712),
+              fontSize: 20,
+              fontWeight: FontWeight.w600,
+              fontFamily: "Lato"),
         ),
         Spacer(),
         Text(
           text2[pagePosition],
           style: TextStyle(
-              color: Colors.grey, fontSize: 14, fontWeight: FontWeight.w400),
+              color: Color(0xFF939396),
+              fontSize: 14,
+              fontWeight: FontWeight.w400,
+              fontFamily: "Caption"),
         ),
       ],
     ),
