@@ -12,17 +12,19 @@ import 'package:medical/wigets/splash_screen/splash_screen.dart';
 void main() {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
-  runApp(MaterialApp(
-    initialRoute: '/',
-    routes: {
-      '/': (context) => const Onboard_all(),
-      '/signup': (context) => const SignUp(),
-      '/codeinemail': (context) => const CodeInEmail(),
-      '/createpassword': (context) => const CreatePassword(),
-      '/createcard': (context) => CreateCard(),
-      '/analizmain': (context) => const AnalizMain(),
-      '/mainpage': (context) => const MainPage(),
-      '/splashscreen': (context) => SplashScreen(),
-    },
-  ));
+  runApp(
+    MaterialApp(
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const Onboard_all(),
+        '/signup': (context) => const SignUp(),
+        '/codeinemail': (context) => const CodeInEmail(),
+        '/createpassword': (context) => const CreatePassword(),
+        '/createcard': (context) => CreateCard(),
+        '/analizmain': (context) => const AnalizMain(),
+        '/mainpage': (context) => const MainPage(),
+        '/splashscreen': (context) => SplashScreen(),
+      },
+    ),
+  );
 }

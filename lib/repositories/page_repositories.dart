@@ -15,6 +15,7 @@ class MainRepository {
       dataList.add(MainModels(
         name: data[i]['name'],
         description: data[i]["description"],
+        price: data[i]["price"],
       ));
 
     }
