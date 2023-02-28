@@ -80,14 +80,16 @@ class SignUp extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10))),
                 onPressed: () => Navigator.pushNamed(context, '/codeinemail'),
                 child: Container(
-                  margin: EdgeInsets.fromLTRB(135, 20, 135, 20),
-                  child: Text(
-                    'Далее',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 17,
-                        fontWeight: FontWeight.w600,
-                        fontFamily: "Caption"),
+                  margin: EdgeInsets.fromLTRB(0, 20, 0, 20),
+                  child: Center(
+                    child: Text(
+                      'Далее',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 17,
+                          fontWeight: FontWeight.w600,
+                          fontFamily: "Caption"),
+                    ),
                   ),
                 ),
               ),
@@ -112,14 +114,16 @@ class SignUp extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10))),
                 onPressed: () {},
                 child: Container(
-                  margin: EdgeInsets.fromLTRB(95, 20, 95, 20),
-                  child: Text(
-                    'Войти с Яндекс',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 17,
-                        fontWeight: FontWeight.w500,
-                        fontFamily: "Caption"),
+                  margin: EdgeInsets.fromLTRB(0, 20, 0, 20),
+                  child: Center(
+                    child: Text(
+                      'Войти с Яндекс',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 17,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: "Caption"),
+                    ),
                   ),
                 ),
               )

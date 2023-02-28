@@ -268,14 +268,16 @@ class CreateCard extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10))),
               onPressed: () => Navigator.pushNamed(context, '/codeinemail'),
               child: Container(
-                margin: EdgeInsets.fromLTRB(130, 20, 130, 20),
-                child: Text(
-                  'Создать',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 17,
-                      fontWeight: FontWeight.w600,
-                      fontFamily: "Caption"),
+                margin: EdgeInsets.fromLTRB(0, 20, 0, 20),
+                child: Center(
+                  child: Text(
+                    'Создать',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 17,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: "Caption"),
+                  ),
                 ),
               ),
             ),

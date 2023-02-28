@@ -52,9 +52,9 @@ class CreatePassword extends StatelessWidget {
                     fontFamily: "Caption",
                     fontSize: 15),
               ),
-              Container(
-                margin: EdgeInsets.fromLTRB(0, 60, 0, 60),
-                  child: Image.asset("assets/image/progress.png")),
+              Spacer(),
+              Image.asset("assets/image/progress.png"),
+              Spacer(),
               Image.asset("assets/image/keyboard.png")
             ],
           ),

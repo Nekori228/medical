@@ -55,7 +55,7 @@ class _pagesState extends State<bottomNavigation> {
           type: BottomNavigationBarType.fixed,
           items: [
             BottomNavigationBarItem(
-                icon: new SvgPicture.asset('assets/image/analiz.svg'),
+                icon: new SvgPicture.asset('assets/image/analiz_nopress.svg'),
                 label: 'Анализы'
             ),
             BottomNavigationBarItem(
