@@ -162,6 +162,9 @@ class _AnalizMainState extends State<AnalizMain> {
                                       ),
                                     ),
                                   ),
+                                  Text(
+                                    _MainModelsList![i].name,
+                                  ),
                                   Container(
                                     margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
                                     child: ElevatedButton(
@@ -198,26 +201,26 @@ class _AnalizMainState extends State<AnalizMain> {
                       ),
                     );
                   } else {
-                    return ListTile(
-                      title: Text(
-                        _MainModelsList![i - 1].name,
-                        style: const TextStyle(color: Colors.black),
+                    return Container(
+                      decoration: BoxDecoration(
+                        color: Colors.pink
                       ),
-                      subtitle: Text(
-                        _MainModelsList![i - 1].description,
-                        style: const TextStyle(color: Colors.black),
+                      child: ListTile(
+                        title: Text('ddd'),
+                        // title: Text(
+                        //   _MainModelsList![i - 1].name,
+                        //   style: const TextStyle(color: Colors.black),
+                        // ),
+                        subtitle: Text(
+                          _MainModelsList![i - 1].description,
+                          style: const TextStyle(color: Colors.black),
+                        ),
+                        leading: Text(
+                          _MainModelsList![i - 1].price,
+                          style: const TextStyle(color: Colors.black),
+                        ),
+                        onTap: () {},
                       ),
-                      trailing: const Icon(Icons.arrow_forward_ios),
-                      leading: Text(
-                        _MainModelsList![i - 1].price,
-                        style: const TextStyle(color: Colors.black),
-                      ),
-                      onTap: () {
-                        Navigator.of(context).pushNamed(
-                          '/coin',
-                          arguments: _MainModelsList![i - 1],
-                        );
-                      },
                     );
                   }
                 }),

@@ -8,5 +8,4 @@ class MainModels {
   final String name;
   final String description;
   final String price;
-
 }

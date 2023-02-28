@@ -16,6 +16,7 @@ class MainRepository {
         name: data[i]['name'],
         description: data[i]["description"],
         price: data[i]["price"],
+        // image: data[i]["image"],
       ));
 
     }
