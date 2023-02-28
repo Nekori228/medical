@@ -7,7 +7,7 @@ import 'models/main_models.dart';
 
 class MainRepository {
   Future getCoinsList() async {
-    final response = await Dio().get("https://medic.madskill.ru/api/catalog");
+    final response = await Dio().get("https://medic.madskill.ru/api/news");
     debugPrint(response.toString());
     final data = response.data;
     final dataList = [];
