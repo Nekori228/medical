@@ -10,10 +10,22 @@ class AnalizMain extends StatefulWidget {
 
   @override
   State<AnalizMain> createState() => _AnalizMainState();
+
 }
 
 class _AnalizMainState extends State<AnalizMain> {
-  List<MainModels>? _MainModelsList;
+  dynamic _MainModelsList = [];
+
+  void MainRepo () {
+    _MainModelsList = MainRepository().getCoinsList();
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    MainRepo();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,132 +62,149 @@ class _AnalizMainState extends State<AnalizMain> {
             ),
           ),
         ),
-        // body: (_MainModelsList == null)
-        //     ? const SizedBox()
-        //     : ListView.separated(
-        //         itemCount: _MainModelsList!.length,
-        //         separatorBuilder: (context, index) => const Divider(),
-        //         itemBuilder: (context, i) {
-        //           final coin = _MainModelsList![i];
-        //           final coinName = coin.name;
-        //           return MainTile(coin: coin);
-        //         }),
-        body:
-        SafeArea(
-          child: Container(
-            margin: EdgeInsets.symmetric(
-                horizontal: MediaQuery.of(context).size.width * 0.04),
-            child: Column(
-              children: [
-                Text(
-                  'Акции и новости',
-                  style: TextStyle(
-                      color: Color(0xFF939396),
-                      fontFamily: "Caption",
-                      fontWeight: FontWeight.w600,
-                      fontSize: 17),
-                ),
-                Text(
-                  'Каталог анализов',
-                  style: TextStyle(
-                      color: Color(0xFF939396),
-                      fontFamily: "Caption",
-                      fontWeight: FontWeight.w600,
-                      fontSize: 17),
-                ),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Container(
-                    margin: EdgeInsets.fromLTRB(0, 20, 0, 20),
-                    child: Row(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.fromLTRB(0, 0, 20, 0),
-                          child: ElevatedButton(
-                              onPressed: () {
-                                Navigator.push(context, new MaterialPageRoute(
-                                    builder: (context) =>
-                                    new SplashScreen()));
-                              },
-                              clipBehavior: Clip.antiAlias,
-                              style: ElevatedButton.styleFrom(
-                                elevation: 0,
-                                backgroundColor: Color(0xFF1A6FEE),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                padding: EdgeInsets.zero,
-                              ),
-                              child: Container(
-                                  margin: EdgeInsets.fromLTRB(10, 15, 10, 15),
-                                  child: Text(
-                                    'Популярное',
-                                    style: TextStyle(
-                                        color: Color(0xFFFFFFFF),
-                                        fontFamily: "Caption",
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 15),
-                                  ))),
-                        ),
-                        Container(
-                          margin: EdgeInsets.fromLTRB(0, 0, 20, 0),
-                          child: ElevatedButton(
-                              onPressed: () {},
-                              clipBehavior: Clip.antiAlias,
-                              style: ElevatedButton.styleFrom(
-                                elevation: 0,
-                                backgroundColor: Color(0xFFF5F5F9),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                padding: EdgeInsets.zero,
-                              ),
-                              child: Container(
-                                margin: EdgeInsets.fromLTRB(10, 15, 10, 15),
-                                child: Text(
-                                  'Covid',
-                                  style: TextStyle(
-                                      color: Color(0xFF7E7E9A),
-                                      fontFamily: "Caption",
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 15),
-                                ),
-                              )),
-                        ),
-                        Container(
-                          margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                          child: ElevatedButton(
-                            onPressed: () {},
-                            clipBehavior: Clip.antiAlias,
-                            style: ElevatedButton.styleFrom(
-                              elevation: 0,
-                              backgroundColor: Color(0xFFF5F5F9),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              padding: EdgeInsets.zero,
-                            ),
-                            child: Container(
-                              margin: EdgeInsets.fromLTRB(10, 15, 10, 15),
-                              child: Text(
-                                'Комплексные',
-                                style: TextStyle(
-                                    color: Color(0xFF7E7E9A),
-                                    fontFamily: "Caption",
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 15),
-                              ),
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
+          body: (_MainModelsList == null)
+              ? const SizedBox(child: Text('Error', style: TextStyle(color: Color(0xFF000000 )),),)
+              : ListView.separated(
+                  itemCount: _MainModelsList.length,
+                  separatorBuilder: (context, index) => const Divider(),
+                  itemBuilder: (context, i) {
+                    final coin = _MainModelsList![i];
+                    final coinName = coin.name;
+                    return ListTile(
+                      // leading: Image.network(coin.imageUrl),
+                      title: Text(
+                        coin.name,
+                        style: TextStyle(color: Colors.black),
+                      ),
+                      subtitle: Text(
+                        '${coin.description} \$',
+                        style: TextStyle(color: Colors.black),
+                      ),
+                      trailing: const Icon(Icons.arrow_forward_ios),
+                      onTap: () {
+                        Navigator.of(context).pushNamed(
+                          '/coin',
+                          arguments: coin,
+                        );
+                      },
+                    );
+                  }),
+        // body:
+        // SafeArea(
+        //   child: Container(
+        //     margin: EdgeInsets.symmetric(
+        //         horizontal: MediaQuery.of(context).size.width * 0.04),
+        //     child: Column(
+        //       children: [
+        //         Text(
+        //           'Акции и новости',
+        //           style: TextStyle(
+        //               color: Color(0xFF939396),
+        //               fontFamily: "Caption",
+        //               fontWeight: FontWeight.w600,
+        //               fontSize: 17),
+        //         ),
+        //         Text(
+        //           'Каталог анализов',
+        //           style: TextStyle(
+        //               color: Color(0xFF939396),
+        //               fontFamily: "Caption",
+        //               fontWeight: FontWeight.w600,
+        //               fontSize: 17),
+        //         ),
+        //         SingleChildScrollView(
+        //           scrollDirection: Axis.horizontal,
+        //           child: Container(
+        //             margin: EdgeInsets.fromLTRB(0, 20, 0, 20),
+        //             child: Row(
+        //               children: [
+        //                 Container(
+        //                   margin: EdgeInsets.fromLTRB(0, 0, 20, 0),
+        //                   child: ElevatedButton(
+        //                       onPressed: () {
+        //                         Navigator.push(context, new MaterialPageRoute(
+        //                             builder: (context) =>
+        //                             new SplashScreen()));
+        //                       },
+        //                       clipBehavior: Clip.antiAlias,
+        //                       style: ElevatedButton.styleFrom(
+        //                         elevation: 0,
+        //                         backgroundColor: Color(0xFF1A6FEE),
+        //                         shape: RoundedRectangleBorder(
+        //                           borderRadius: BorderRadius.circular(10),
+        //                         ),
+        //                         padding: EdgeInsets.zero,
+        //                       ),
+        //                       child: Container(
+        //                           margin: EdgeInsets.fromLTRB(10, 15, 10, 15),
+        //                           child: Text(
+        //                             'Популярное',
+        //                             style: TextStyle(
+        //                                 color: Color(0xFFFFFFFF),
+        //                                 fontFamily: "Caption",
+        //                                 fontWeight: FontWeight.w600,
+        //                                 fontSize: 15),
+        //                           ))),
+        //                 ),
+        //                 Container(
+        //                   margin: EdgeInsets.fromLTRB(0, 0, 20, 0),
+        //                   child: ElevatedButton(
+        //                       onPressed: () {},
+        //                       clipBehavior: Clip.antiAlias,
+        //                       style: ElevatedButton.styleFrom(
+        //                         elevation: 0,
+        //                         backgroundColor: Color(0xFFF5F5F9),
+        //                         shape: RoundedRectangleBorder(
+        //                           borderRadius: BorderRadius.circular(10),
+        //                         ),
+        //                         padding: EdgeInsets.zero,
+        //                       ),
+        //                       child: Container(
+        //                         margin: EdgeInsets.fromLTRB(10, 15, 10, 15),
+        //                         child: Text(
+        //                           'Covid',
+        //                           style: TextStyle(
+        //                               color: Color(0xFF7E7E9A),
+        //                               fontFamily: "Caption",
+        //                               fontWeight: FontWeight.w600,
+        //                               fontSize: 15),
+        //                         ),
+        //                       )),
+        //                 ),
+        //                 Container(
+        //                   margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+        //                   child: ElevatedButton(
+        //                     onPressed: () {},
+        //                     clipBehavior: Clip.antiAlias,
+        //                     style: ElevatedButton.styleFrom(
+        //                       elevation: 0,
+        //                       backgroundColor: Color(0xFFF5F5F9),
+        //                       shape: RoundedRectangleBorder(
+        //                         borderRadius: BorderRadius.circular(10),
+        //                       ),
+        //                       padding: EdgeInsets.zero,
+        //                     ),
+        //                     child: Container(
+        //                       margin: EdgeInsets.fromLTRB(10, 15, 10, 15),
+        //                       child: Text(
+        //                         'Комплексные',
+        //                         style: TextStyle(
+        //                             color: Color(0xFF7E7E9A),
+        //                             fontFamily: "Caption",
+        //                             fontWeight: FontWeight.w600,
+        //                             fontSize: 15),
+        //                       ),
+        //                     ),
+        //                   ),
+        //                 )
+        //               ],
+        //             ),
+        //           ),
+        //         ),
+        //       ],
+        //     ),
+        //   ),
+        // ),
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.account_balance_outlined),
           onPressed: () async {
