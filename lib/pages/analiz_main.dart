@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../repositories/models/main_models.dart';
-import '../repositories/page_repositories.dart';
+import '../repositories/page_catalog.dart';
 import '../wigets/splash_screen/splash_screen.dart';
 
 class AnalizMain extends StatefulWidget {
@@ -68,162 +68,295 @@ class _AnalizMainState extends State<AnalizMain> {
                   style: TextStyle(color: Color(0xFF000000)),
                 ),
               )
-            : ListView.separated(
-                itemCount: _MainModelsList.length + 1,
-                separatorBuilder: (context, index) => const Divider(),
-                itemBuilder: (context, i) {
-                  if (i == 0) {
-                    return Container(
-                      margin: EdgeInsets.symmetric(
-                          horizontal: MediaQuery.of(context).size.width * 0.04),
-                      child: Column(
-                        children: [
-                          Text(
-                            'Акции и новости',
-                            style: TextStyle(
-                                color: Color(0xFF939396),
-                                fontFamily: "Caption",
-                                fontWeight: FontWeight.w600,
-                                fontSize: 17),
-                          ),
-                          Text(
-                            'Каталог анализов',
-                            style: TextStyle(
-                                color: Color(0xFF939396),
-                                fontFamily: "Caption",
-                                fontWeight: FontWeight.w600,
-                                fontSize: 17),
-                          ),
-                          SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Container(
-                              margin: EdgeInsets.fromLTRB(0, 20, 0, 20),
-                              child: Row(
-                                children: [
-                                  Container(
-                                    margin: EdgeInsets.fromLTRB(0, 0, 20, 0),
-                                    child: ElevatedButton(
-                                      onPressed: () {
-                                        Navigator.push(
-                                            context,
-                                            new MaterialPageRoute(
-                                                builder: (context) =>
-                                                    new SplashScreen()));
-                                      },
-                                      clipBehavior: Clip.antiAlias,
-                                      style: ElevatedButton.styleFrom(
-                                        elevation: 0,
-                                        backgroundColor: Color(0xFF1A6FEE),
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                        ),
-                                        padding: EdgeInsets.zero,
-                                      ),
-                                      child: Container(
-                                        margin:
-                                            EdgeInsets.fromLTRB(10, 15, 10, 15),
+            : Column(
+                children: <Widget>[
+                  Expanded(
+                    child: SizedBox(
+                      height: MediaQuery.of(context).size.width,
+                      child: ListView.separated(
+                          itemCount: _MainModelsList.length + 1,
+                          separatorBuilder: (context, index) => const Divider(),
+                          itemBuilder: (context, i) {
+                            if (i == 0) {
+                              return Container(
+                                margin: EdgeInsets.symmetric(
+                                    horizontal:
+                                        MediaQuery.of(context).size.width *
+                                            0.04),
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      margin: EdgeInsets.symmetric(
+                                          horizontal: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.04),
+                                      child: Align(
+                                        alignment: Alignment.topLeft,
                                         child: Text(
-                                          'Популярное',
+                                          'Акции и новости',
                                           style: TextStyle(
-                                              color: Color(0xFFFFFFFF),
+                                              color: Color(0xFF939396),
                                               fontFamily: "Caption",
                                               fontWeight: FontWeight.w600,
-                                              fontSize: 15),
+                                              fontSize: 17),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                  Container(
-                                    margin: EdgeInsets.fromLTRB(0, 0, 20, 0),
-                                    child: ElevatedButton(
-                                      onPressed: () {},
-                                      clipBehavior: Clip.antiAlias,
-                                      style: ElevatedButton.styleFrom(
-                                        elevation: 0,
-                                        backgroundColor: Color(0xFFF5F5F9),
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                        ),
-                                        padding: EdgeInsets.zero,
-                                      ),
-                                      child: Container(
-                                        margin:
-                                            EdgeInsets.fromLTRB(10, 15, 10, 15),
+                                    // ListView.separated(
+                                    //     itemCount: _MainModelsList.length,
+                                    //     separatorBuilder: (context, index) => const Divider(),
+                                    //     itemBuilder: (context, i) {
+                                    //       return Container(
+                                    //         child: Text(
+                                    //           _MainModelsList![i].name,
+                                    //           style: const TextStyle(color: Colors.black),
+                                    //         ),
+                                    //       );
+                                    //     }),
+                                    Container(
+                                      margin: EdgeInsets.symmetric(
+                                          horizontal: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.04),
+                                      child: Align(
+                                        alignment: Alignment.topLeft,
                                         child: Text(
-                                          'Covid',
+                                          'Каталог анализов',
                                           style: TextStyle(
-                                              color: Color(0xFF7E7E9A),
+                                              color: Color(0xFF939396),
                                               fontFamily: "Caption",
                                               fontWeight: FontWeight.w600,
-                                              fontSize: 15),
+                                              fontSize: 17),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                  Text(
-                                    _MainModelsList![i].name,
-                                  ),
-                                  Container(
-                                    margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                                    child: ElevatedButton(
-                                      onPressed: () {},
-                                      clipBehavior: Clip.antiAlias,
-                                      style: ElevatedButton.styleFrom(
-                                        elevation: 0,
-                                        backgroundColor: Color(0xFFF5F5F9),
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                        ),
-                                        padding: EdgeInsets.zero,
-                                      ),
-                                      child: Container(
-                                        margin:
-                                            EdgeInsets.fromLTRB(10, 15, 10, 15),
-                                        child: Text(
-                                          'Комплексные',
-                                          style: TextStyle(
-                                              color: Color(0xFF7E7E9A),
-                                              fontFamily: "Caption",
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 15),
+                                    Container(
+                                      margin: EdgeInsets.symmetric(
+                                          horizontal: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.04),
+                                      child: SingleChildScrollView(
+                                        scrollDirection: Axis.horizontal,
+                                        child: Container(
+                                          margin:
+                                              EdgeInsets.fromLTRB(0, 20, 0, 20),
+                                          child: Row(
+                                            children: [
+                                              Container(
+                                                margin: EdgeInsets.fromLTRB(
+                                                    0, 0, 20, 0),
+                                                child: ElevatedButton(
+                                                  onPressed: () {},
+                                                  clipBehavior: Clip.antiAlias,
+                                                  style:
+                                                      ElevatedButton.styleFrom(
+                                                    elevation: 0,
+                                                    backgroundColor:
+                                                        Color(0xFF1A6FEE),
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10),
+                                                    ),
+                                                    padding: EdgeInsets.zero,
+                                                  ),
+                                                  child: Container(
+                                                    margin: EdgeInsets.fromLTRB(
+                                                        10, 15, 10, 15),
+                                                    child: Text(
+                                                      'Популярное',
+                                                      style: TextStyle(
+                                                          color:
+                                                              Color(0xFFFFFFFF),
+                                                          fontFamily: "Caption",
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          fontSize: 15),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              Container(
+                                                margin: EdgeInsets.fromLTRB(
+                                                    0, 0, 20, 0),
+                                                child: ElevatedButton(
+                                                  onPressed: () {},
+                                                  clipBehavior: Clip.antiAlias,
+                                                  style:
+                                                      ElevatedButton.styleFrom(
+                                                    elevation: 0,
+                                                    backgroundColor:
+                                                        Color(0xFFF5F5F9),
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10),
+                                                    ),
+                                                    padding: EdgeInsets.zero,
+                                                  ),
+                                                  child: Container(
+                                                    margin: EdgeInsets.fromLTRB(
+                                                        10, 15, 10, 15),
+                                                    child: Text(
+                                                      'Covid',
+                                                      style: TextStyle(
+                                                          color:
+                                                              Color(0xFF7E7E9A),
+                                                          fontFamily: "Caption",
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          fontSize: 15),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              Container(
+                                                margin: EdgeInsets.fromLTRB(
+                                                    0, 0, 0, 0),
+                                                child: ElevatedButton(
+                                                  onPressed: () {},
+                                                  clipBehavior: Clip.antiAlias,
+                                                  style:
+                                                      ElevatedButton.styleFrom(
+                                                    elevation: 0,
+                                                    backgroundColor:
+                                                        Color(0xFFF5F5F9),
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10),
+                                                    ),
+                                                    padding: EdgeInsets.zero,
+                                                  ),
+                                                  child: Container(
+                                                    margin: EdgeInsets.fromLTRB(
+                                                        10, 15, 10, 15),
+                                                    child: Text(
+                                                      'Комплексные',
+                                                      style: TextStyle(
+                                                          color:
+                                                              Color(0xFF7E7E9A),
+                                                          fontFamily: "Caption",
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          fontSize: 15),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    );
-                  } else {
-                    return Container(
-                      decoration: BoxDecoration(
-                        color: Colors.pink
-                      ),
-                      child: ListTile(
-                        title: Text('ddd'),
-                        // title: Text(
-                        //   _MainModelsList![i - 1].name,
-                        //   style: const TextStyle(color: Colors.black),
-                        // ),
-                        subtitle: Text(
-                          _MainModelsList![i - 1].description,
-                          style: const TextStyle(color: Colors.black),
-                        ),
-                        leading: Text(
-                          _MainModelsList![i - 1].price,
-                          style: const TextStyle(color: Colors.black),
-                        ),
-                        onTap: () {},
-                      ),
-                    );
-                  }
-                }),
+                                  ],
+                                ),
+                              );
+                            } else {
+                              return Container(
+                                margin: EdgeInsets.symmetric(
+                                    horizontal:
+                                        MediaQuery.of(context).size.width *
+                                            0.04),
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(20),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Color(0xFFF4F4F4),
+                                      blurRadius: 4,
+                                      offset: Offset(4, 8), // Shadow position
+                                    ),
+                                  ],
+                                ),
+                                child: ListTile(
+                                  title: Text(
+                                    _MainModelsList![i - 1].name,
+                                    style: const TextStyle(
+                                        color: Color(0xFF000000),
+                                        fontFamily: "Caption",
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 16),
+                                  ),
+                                  subtitle: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Column(
+                                        children: [
+                                          Align(
+                                            alignment: Alignment.topLeft,
+                                            child: Text(
+                                              _MainModelsList![i - 1]
+                                                  .time_result,
+                                              style: const TextStyle(
+                                                  color: Color(0xFF939396),
+                                                  fontFamily: "Caption",
+                                                  fontWeight: FontWeight.w600,
+                                                  fontSize: 14),
+                                            ),
+                                          ),
+                                          Align(
+                                            alignment: Alignment.topRight,
+                                            child: Text(
+                                              '${_MainModelsList![i - 1].price} \₽',
+                                              style: const TextStyle(
+                                                  color: Color(0xFF000000),
+                                                  fontFamily: "Caption",
+                                                  fontWeight: FontWeight.w600,
+                                                  fontSize: 17),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      ElevatedButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                              context,
+                                              new MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      new SplashScreen()));
+                                        },
+                                        clipBehavior: Clip.antiAlias,
+                                        style: ElevatedButton.styleFrom(
+                                          elevation: 0,
+                                          backgroundColor: Color(0xFF1A6FEE),
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                          ),
+                                          padding: EdgeInsets.zero,
+                                        ),
+                                        child: Container(
+                                          margin: EdgeInsets.fromLTRB(
+                                              15, 10, 15, 10),
+                                          child: Text(
+                                            'Добавить',
+                                            style: TextStyle(
+                                                color: Color(0xFFFFFFFF),
+                                                fontFamily: "Caption",
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 15),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  onTap: () {},
+                                ),
+                              );
+                            }
+                          }),
+                    ),
+                  ),
+                ],
+              ),
         floatingActionButton: FloatingActionButton(
           child: const Icon(Icons.account_balance_outlined),
           onPressed: () async {

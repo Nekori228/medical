@@ -1,13 +1,13 @@
-class MainModels {
-  const MainModels({
+class MainModelsNews {
+  const MainModelsNews({
     required this.name,
     required this.description,
     required this.price,
-    required this.time_result,
+    required this.image,
   });
 
   final String name;
   final String description;
   final String price;
-  final String time_result;
+  final String image;
 }
