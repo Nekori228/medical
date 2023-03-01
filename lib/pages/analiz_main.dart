@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:medical/pages/test_page.dart';
 
 import '../repositories/models/main_models.dart';
 import '../repositories/page_catalog.dart';
@@ -14,9 +15,11 @@ class AnalizMain extends StatefulWidget {
 
 class _AnalizMainState extends State<AnalizMain> {
   dynamic _MainModelsList = [];
+  dynamic _MainRepositoryNews = [];
 
   void getListModels() async {
     _MainModelsList = await MainRepository().getCoinsList();
+    _MainRepositoryNews = await MainRepository().getCoinsList();
     setState(() {});
   }
 
@@ -28,8 +31,8 @@ class _AnalizMainState extends State<AnalizMain> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
+    return MaterialApp(
+      home: Scaffold(
         appBar: AppBar(
           backgroundColor: const Color(0xFFFFFFFF),
           elevation: 0,
@@ -62,10 +65,12 @@ class _AnalizMainState extends State<AnalizMain> {
           ),
         ),
         body: _MainModelsList == null || _MainModelsList.length == 0
-            ? const SizedBox(
-                child: Text(
-                  'Error',
-                  style: TextStyle(color: Color(0xFF000000)),
+            ? SafeArea(
+                child: Center(
+                  child: const CircularProgressIndicator(
+                    backgroundColor: Colors.white,
+                    strokeWidth: 6,
+                  ),
                 ),
               )
             : Column(
@@ -103,17 +108,6 @@ class _AnalizMainState extends State<AnalizMain> {
                                         ),
                                       ),
                                     ),
-                                    // ListView.separated(
-                                    //     itemCount: _MainModelsList.length,
-                                    //     separatorBuilder: (context, index) => const Divider(),
-                                    //     itemBuilder: (context, i) {
-                                    //       return Container(
-                                    //         child: Text(
-                                    //           _MainModelsList![i].name,
-                                    //           style: const TextStyle(color: Colors.black),
-                                    //         ),
-                                    //       );
-                                    //     }),
                                     Container(
                                       margin: EdgeInsets.symmetric(
                                           horizontal: MediaQuery.of(context)
@@ -149,7 +143,11 @@ class _AnalizMainState extends State<AnalizMain> {
                                                 margin: EdgeInsets.fromLTRB(
                                                     0, 0, 20, 0),
                                                 child: ElevatedButton(
-                                                  onPressed: () {},
+                                                  onPressed: () => Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              AnalizMainTest())),
                                                   clipBehavior: Clip.antiAlias,
                                                   style:
                                                       ElevatedButton.styleFrom(
@@ -322,6 +320,7 @@ class _AnalizMainState extends State<AnalizMain> {
                                               new MaterialPageRoute(
                                                   builder: (context) =>
                                                       new SplashScreen()));
+                                          ;
                                         },
                                         clipBehavior: Clip.antiAlias,
                                         style: ElevatedButton.styleFrom(
@@ -357,13 +356,13 @@ class _AnalizMainState extends State<AnalizMain> {
                   ),
                 ],
               ),
-        floatingActionButton: FloatingActionButton(
-          child: const Icon(Icons.account_balance_outlined),
-          onPressed: () async {
-            _MainModelsList = await MainRepository().getCoinsList();
-            setState(() {});
-          },
-        ),
+        // floatingActionButton: FloatingActionButton(
+        //   child: const Icon(Icons.account_balance_outlined),
+        //   onPressed: () async {
+        //     _MainModelsList = await MainRepository().getCoinsList();
+        //     setState(() {});
+        //   },
+        // ),
       ),
     );
   }

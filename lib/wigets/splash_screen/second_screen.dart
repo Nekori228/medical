@@ -63,14 +63,16 @@ class SecondScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10))),
               onPressed: () => Navigator.pushNamed(context, '/codeinemail'),
               child: Container(
-                margin: EdgeInsets.fromLTRB(120, 20, 120, 20),
-                child: Text(
-                  'Чек покупки',
-                  style: TextStyle(
-                      color: Color(0xFF1A6FEE),
-                      fontSize: 17,
-                      fontWeight: FontWeight.w600,
-                      fontFamily: "Caption"),
+                margin: EdgeInsets.fromLTRB(0, 20, 0, 20),
+                child: Center(
+                  child: Text(
+                    'Чек покупки',
+                    style: TextStyle(
+                        color: Color(0xFF1A6FEE),
+                        fontSize: 17,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: "Caption"),
+                  ),
                 ),
               ),
             ),
@@ -78,19 +80,23 @@ class SecondScreen extends StatelessWidget {
               margin: EdgeInsets.fromLTRB(0, 20, 0, 20),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF1A6FEE),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10))),
-                onPressed: () => Navigator.pushNamed(context, '/codeinemail'),
+                  backgroundColor: Color(0xFF1A6FEE),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                onPressed: () => Navigator.pushNamed(context, '/analizmain'),
                 child: Container(
-                  margin: EdgeInsets.fromLTRB(120, 20, 120, 20),
-                  child: Text(
-                    'На главную',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 17,
-                        fontWeight: FontWeight.w600,
-                        fontFamily: "Caption"),
+                  margin: EdgeInsets.fromLTRB(0, 20, 0, 20),
+                  child: Center(
+                    child: Text(
+                      'На главную',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 17,
+                          fontWeight: FontWeight.w600,
+                          fontFamily: "Caption"),
+                    ),
                   ),
                 ),
               ),

@@ -121,7 +121,7 @@ class _CarouselState extends State<Carousel> {
               children: indicators(images.length, activePage)),
         ),
         SizedBox(
-          width: 700,
+          width: 400,
           height: 300,
           child: PageView.builder(
               itemCount: images.length,
@@ -188,7 +188,7 @@ AnimatedContainer slider2(images, pagePosition, active) {
           text2[pagePosition],
           style: TextStyle(
               color: Color(0xFF939396),
-              fontSize: 14,
+              fontSize: 13,
               fontWeight: FontWeight.w400,
               fontFamily: "Caption"),
         ),

@@ -7,6 +7,7 @@ import 'package:medical/pages/create_password.dart';
 import 'package:medical/pages/mainPage.dart';
 import 'package:medical/pages/onboard_all.dart';
 import 'package:medical/pages/signup.dart';
+import 'package:medical/pages/test_page.dart';
 import 'package:medical/wigets/splash_screen/splash_screen.dart';
 
 void main() {
@@ -24,6 +25,8 @@ void main() {
         '/analizmain': (context) => const AnalizMain(),
         '/mainpage': (context) => const MainPage(),
         '/splashscreen': (context) => SplashScreen(),
+        '/analizmaintest': (context) => AnalizMainTest(),
+
       },
     ),
   );
